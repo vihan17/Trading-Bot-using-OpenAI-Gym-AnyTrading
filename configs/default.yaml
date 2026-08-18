@@ -1,0 +1,32 @@
+# Dataset / environment configuration.
+data:
+  path: data/raw/measurement.pickle
+  price_column: Close
+  train_fraction: 0.7
+
+env:
+  window_size: 5
+  initial_value: 10000
+  order_fraction: 0.66
+  trade_fee: 0.003375
+  slippage: 0.005
+  hold: true
+  diversity_penalty: 0.001
+  random_split: true
+  max_steps: 500
+
+train:
+  algorithm: PPO          # PPO | A2C | DQN
+  policy: MlpPolicy
+  total_timesteps: 100000
+  learning_rate: 0.0003
+  gamma: 0.99
+  seed: 42
+  device: auto
+  model_dir: models
+
+eval:
+  n_episodes: 5
+  frame_length: 500
+  periods_per_year: 8760
+  results_dir: results
